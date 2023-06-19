@@ -141,6 +141,7 @@
     <ClInclude Include="Circulo.h" />
     <ClInclude Include="Cometa.h" />
     <ClInclude Include="Cuadrado.h" />
+    <ClInclude Include="Funciones.h" />
     <ClInclude Include="Paralelogramo.h" />
     <ClInclude Include="Rectangulo.h" />
     <ClInclude Include="Rombo.h" />

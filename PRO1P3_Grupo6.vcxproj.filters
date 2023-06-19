@@ -68,5 +68,8 @@
     <ClInclude Include="Circulo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Funciones.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
