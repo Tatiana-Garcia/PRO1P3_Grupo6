@@ -130,7 +130,6 @@
     <ClCompile Include="Circulo.cpp" />
     <ClCompile Include="Cometa.cpp" />
     <ClCompile Include="Cuadrado.cpp" />
-    <ClCompile Include="Funciones.cpp" />
     <ClCompile Include="Paralelogramo.cpp" />
     <ClCompile Include="PRO1P3_Grupo6.cpp" />
     <ClCompile Include="Rectangulo.cpp" />
@@ -142,7 +141,6 @@
     <ClInclude Include="Circulo.h" />
     <ClInclude Include="Cometa.h" />
     <ClInclude Include="Cuadrado.h" />
-    <ClInclude Include="Funciones.h" />
     <ClInclude Include="Paralelogramo.h" />
     <ClInclude Include="Rectangulo.h" />
     <ClInclude Include="Rombo.h" />
