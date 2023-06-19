@@ -1,4 +1,4 @@
-                     Perímetros y areas de figuras planas                     
+                     Perímetros y áreas de figuras planas                     
                                                                               
                   Figura                         Perímetro          Área      
 +----------------------------------------------------------------------------+
