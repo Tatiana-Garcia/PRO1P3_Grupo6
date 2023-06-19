@@ -1,9 +1,9 @@
-// PRO1P3_Grupo6.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <stdlib.h>
+#include "Funciones.h"
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main(int argc, char* argv[]){
+    string figura = atoi(argv[1]);
+    Funciones f;
+    f.lectura(figura, argv[]);
 }
