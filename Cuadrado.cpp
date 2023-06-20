@@ -2,7 +2,7 @@
 
 void Cuadrado::leerCuadrado(int a)
 {
-    string linea;
+    string linea, print = to_string(a); cout << a<<endl; 
     ifstream Entrada("Cuadrado.txt", ios::in);
     if (!Entrada) {
         cerr << "No se pudo abrir el archivo" << endl;
@@ -12,7 +12,9 @@ void Cuadrado::leerCuadrado(int a)
     {
         while (!Entrada.eof()) {
             getline(Entrada, linea);
-            cout << linea << endl; 
+            regex patron("\\[a = a]");
+            string resultado = regex_replace(linea,patron,print);
+            cout << resultado << endl; 
         }
         Entrada.close();
     }

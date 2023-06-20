@@ -2,8 +2,8 @@
 
 void Paralelogramo::leerParalelogramo(int a, int b, int h)
 {
-    string linea;
-    ifstream Entrada("Paralelogramo.txt", ios::in);
+    string linea, print = "a = "+to_string(a);
+    ifstream Entrada("paralelogramo_01.txt", ios::in);
     if (!Entrada) {
         cerr << "No se pudo abrir el archivo" << endl;
         exit(EXIT_FAILURE);
@@ -12,7 +12,9 @@ void Paralelogramo::leerParalelogramo(int a, int b, int h)
     {
         while (!Entrada.eof()) {
             getline(Entrada, linea);
-            cout << linea << endl;
+            regex patron("{aaa}");
+            string resultado = regex_replace(linea, patron, print);
+            cout << resultado << endl;
         }
         Entrada.close();
     }
