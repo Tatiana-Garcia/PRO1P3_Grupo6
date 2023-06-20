@@ -3,9 +3,15 @@
 void Rombo::leerRombo(int a, int d, int D){
     ifstream rombo;
     string texto;
-    string str = R"(\a = \{a\})", str2 = R"(\{D\})", str3 = R"(\{d\})", str4 = R"([\{a\}\])", str5 = R"(\[\{\4\*a\}\])";
+    string str = R"(\a = \{a\})", str2 = R"(\{D\})", str3 = R"(\{d\})", str4 = R"([\{a\}])", str5 = R"(\[\{4\*a\}\])";
     string str6 = R"(\{D\*d\})", str7 = R"(\[\{D\*d\/2\}\])";
-    regex patron(str), patron2(str2), patron3(str3), patron4(str4), patron5(str5), patron6(str6), patron7(str7);
+    regex patron(str), 
+        patron2(str2), 
+        patron3(str3), 
+        patron4(str4), 
+        patron5(str5), 
+        patron6(str6), 
+        patron7(str7);
     string print, reemplazo;
 
     rombo.open("Rombo.txt", ios::in);

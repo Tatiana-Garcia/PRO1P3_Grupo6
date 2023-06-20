@@ -3,6 +3,9 @@
 void Cuadrado::leerCuadrado(int a)
 {
     int area = a*a, perimetro = 4*a; 
+    string str6 = R"()";
+    regex patrones(str6);
+
     string str5 = R"(\|       4\*a       \|      a\*a      \|)";
     string str = R"(\[a = \{a\}\])", 
         str2 = R"(\|    4\*\(\[\{a\}\]\)    \| \[\{a\}\] \^ \[\{2\}\] \|)", 
@@ -58,4 +61,14 @@ void Cuadrado::leerCuadrado(int a)
 void Cuadrado::Dibujar()
 {
     
+}
+
+int Cuadrado::validacion(int a)
+{
+    int cont = 0; 
+    while (a != 0) {
+        a /= 10;
+        cont++;
+    }
+    return cont; 
 }
