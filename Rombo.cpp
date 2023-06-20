@@ -19,6 +19,24 @@ void Rombo::leerRombo(int a, int d, int D){
                 texto[i] = D;
             if (texto[i] == 123 && texto[i + 1] == 100)
                 texto[i] = d;
+            if (texto[i] == 123 && texto[i + 1] == 52){
+                texto[i - 1] = 4 * a;
+                for (int j = i; j < 7; j++){
+                    if (texto[j] != 32)
+                        texto[j] = (char)32;
+                }
+            }
+            if (texto[i] == 123 && texto[i + 2] == 42){
+                texto[i - 1] = (char)32;
+                texto[i] = D*d;
+            }
+            if (texto[i] == 123 && texto[i + 4] == 47) {
+                texto[i] = (char)32;
+                for (int j = i; j < 7; j++) {
+                    if (texto[j] != 32)
+                        texto[j] = (char)32;
+                }
+            }
         }
         cout << texto << endl;
     }
