@@ -1,11 +1,8 @@
 #pragma once
+#include <fstream>
 #include <iostream>
-#include<string>
-#include<fstream>
-#include<cstdlib>
-#include<sstream>
-#include<iomanip>
-using namespace std; 
+#include <string>
+using namespace std;
 class Cuadrado
 {
 public: 

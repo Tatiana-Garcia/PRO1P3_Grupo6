@@ -33,35 +33,35 @@ void lectura(string figura, char* argv[]) {
         int b = atoi(argv[3]);
         int c = atoi(argv[4]);
         int h = atoi(argv[5]);
-        //Triangulo::leerTriangulo(a, b, c, h);
+        Triangulo::leerTriangulo(a, b, c, h);
     }
     else if (figura == "paralelogramo") {
         int a = atoi(argv[2]);
         int b = atoi(argv[3]);
         int h = atoi(argv[4]);
-        //Paralelogramo::leerParalelogramo(a, b, h);
+        Paralelogramo::leerParalelogramo(a, b, h);
 
     }else if (figura== "rectangulo"){
         int a = atoi(argv[2]);
         int b = atoi(argv[3]);
-        //Rectangulo::leerRectangulo(a,b);
+        Rectangulo::leerRectangulo(a,b);
 
     }else if (figura == "cuadrado") {
         int a = atoi(argv[2]);
-        //Cuadrado::leerCuadrado(a);
+        Cuadrado::leerCuadrado(a);
 
     }else if (figura == "rombo") {
         int a = atoi(argv[2]);
         int d = atoi(argv[3]);
         int D = atoi(argv[4]);
-        //Rombo::leerRombo(a, d, D);
+        Rombo::leerRombo(a, d, D); 
 
     }else if (figura == "cometa") {
         int a = atoi(argv[2]);
         int b = atoi(argv[3]);
         int d = atoi(argv[4]);
         int D = atoi(argv[5]);
-        //Cometa::leerCometa(a,b, d, D);
+        Cometa::leerCometa(a,b, d, D);
 
     }else if (figura== "trapecio"){
         int a = atoi(argv[2]);
@@ -69,13 +69,12 @@ void lectura(string figura, char* argv[]) {
         int c = atoi(argv[4]);
         int B = atoi(argv[5]);
         int h = atoi(argv[6]);  
-        //Trapecio::leerTrapecio(a, b, c, B, h);
+        Trapecio::leerTrapecio(a, b, c, B, h);
 
     }else if(figura == "circulo") {
         int r = atoi(argv[2]);
-        //Circulo::leerCirculo(r);
-    }
-    else {
+        Circulo::leerCirculo(r);
+    }else {
         //hay que poner el menu
         Menu();
     }
