@@ -9,6 +9,7 @@
 #include "Rombo.h"
 #include "Trapecio.h"
 #include "Triangulo.h"
+#include <fstream>
 using namespace std;
 
 void lectura(string figura, char* argv[]) {
@@ -65,4 +66,17 @@ void lectura(string figura, char* argv[]) {
     }
 }
 void Menu(){
+    ifstream menu;
+    string texto;
+
+    menu.open("Menu.txt", ios::in);
+    if (menu.fail()) {
+        cout << "No se pudo abrir el archivo";
+        exit(1);
+    }
+
+    while (!menu.eof()) {
+        getline(menu, texto);
+        cout << texto << endl;
+    }
 }
