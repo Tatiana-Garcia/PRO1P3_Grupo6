@@ -32,7 +32,8 @@ void Rombo::leerRombo(int a, int d, int D){
             }
             if (texto[i] == 123 && texto[i + 4] == 47) {
                 texto[i] = (char)32;
-                for (int j = i; j < 7; j++) {
+                texto[i + 1] = (D * d) / 2;
+                for (int j = i+1; j < 6; j++) {
                     if (texto[j] != 32)
                         texto[j] = (char)32;
                 }
