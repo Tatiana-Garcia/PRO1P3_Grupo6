@@ -27,13 +27,6 @@ void Cuadrado::leerCuadrado(int a)
                 regex letras(cadena); 
                 string resultado = regex_replace(llaves2, letras, to_string(a)); 
                 cout << resultado << endl;
-            }
-            else if (regex_search(linea, matches, patron3)) {
-                string ptr = R"(\|      4 \* a      \|     a \^ 2     \|)";
-                string printing = "|     4 * "+ to_string(a) + "     |    "+ to_string(a) +" ^ 2    |";
-                regex newlinea(ptr);
-                string linea1 = regex_replace(linea, newlinea, printing);  
-                cout << linea1 << endl; 
             }//faltara un if para las multiplicaciones
             else {
                 cout << linea << endl;
@@ -43,7 +36,14 @@ void Cuadrado::leerCuadrado(int a)
         Entrada.close();
     }
 }
-
+/*
+            else if (regex_search(linea, matches, patron3)) {
+                string ptr = R"(\|      4 \* a      \|     a \^ 2     \|)";
+                string printing = "|     4 * "+ to_string(a) + "     |    "+ to_string(a) +" ^ 2    |";
+                regex newlinea(ptr);
+                string linea1 = regex_replace(linea, newlinea, printing);  
+                cout << linea1 << endl; 
+            }*/
 void Cuadrado::Dibujar()
 {
     
