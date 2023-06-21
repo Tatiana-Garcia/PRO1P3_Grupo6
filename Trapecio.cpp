@@ -49,31 +49,6 @@ string validar9(int valor) {
     return mensaje;
 }
 
-/*string centrar11(int valor) {
-    if (to_string(valor).size() == 1)
-        return "     " + to_string(valor) + "     ";
-    else if (to_string(valor).size() == 2)
-        return "     " + to_string(valor) + "    ";
-    else if (to_string(valor).size() == 3)
-        return "    " + to_string(valor) + "    ";
-    else if (to_string(valor).size() == 4)
-        return "    " + to_string(valor) + "   ";
-    else if (to_string(valor).size() == 5)
-        return "   " + to_string(valor) + "   ";
-    else if (to_string(valor).size() == 6)
-        return "   " + to_string(valor) + "  ";
-    else if (to_string(valor).size() == 7)
-        return "  " + to_string(valor) + "  ";
-    else if (to_string(valor).size() == 8)
-        return "  " + to_string(valor) + " ";
-    else if (to_string(valor).size() == 9)
-        return " " + to_string(valor) + " ";
-    else if (to_string(valor).size() == 10)
-        return " " + to_string(valor);
-    else if (to_string(valor).size() == 11)
-        return to_string(valor);
-}*/
-
 void Trapecio::leerTrapecio(int a, int b, int c, int B, int h) {
     ifstream trapecio;
     string texto, print, reemplazo;
@@ -112,15 +87,6 @@ void Trapecio::leerTrapecio(int a, int b, int c, int B, int h) {
             }
             cout << reemplazo << endl;
         }
-
-        /*else if (regex_search(texto, matches, patron2)) {//{b}
-            print = validar3(b);
-            reemplazo = regex_replace(texto, patron2, print);
-        }else if (regex_search(texto, matches, patron4)) {//{h}
-            print = validar3(h);
-            reemplazo = regex_replace(texto, patron4, print);
-        }*/
-
         else if (regex_search(texto, matches, patron5)) {//{B}
             print = validar3(B);
             reemplazo = regex_replace(texto, patron5, print);
@@ -148,13 +114,19 @@ void Trapecio::leerTrapecio(int a, int b, int c, int B, int h) {
             }
             cout << reemplazo << endl;
         }
-
         else if (regex_search(texto, matches, patron8)) {//{B+b+h/2}
             print = validar9((B + b + h) / 2);
             reemplazo = regex_replace(texto, patron8, print);
             cout << reemplazo << endl;
+        }else if (regex_search(texto, matches, patron2)) {//{b}
+            print = validar3(b);
+            reemplazo = regex_replace(texto, patron2, print);
+            cout << reemplazo << endl; 
+        }else if (regex_search(texto, matches, patron4)) {//{h}
+            print = validar3(h);
+            reemplazo = regex_replace(texto, patron4, print);
+            cout << reemplazo << endl; 
         }
-
         else {
             cout << texto << endl;
         }
