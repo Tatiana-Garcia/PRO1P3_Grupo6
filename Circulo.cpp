@@ -1,100 +1,115 @@
-#include "Circulo.h"
-
-static void setespacio(int cantidad, string& texto) {
-	for (size_t i = 0; i < cantidad; i++)
-	{
-		texto += " ";
+﻿#include "Circulo.h"
+string circulo_valid(int a, int variable)
+{
+	int cont = 0;
+	int value = (int)a;
+	while (value != 0) {
+		value /= 10;
+		cont++;
 	}
-}
+	int x = cont;
+	string s = "", p = "", c5 = "";
 
-
-static string Centrar(string perimetro, int original) {
-	string temp = "";
-	int length = perimetro.length();
-	int espaciado = original - length;
-
-	if (espaciado % 2 == 0)
+	for (size_t i = 0; i < x; i++)
 	{
-		int derecho = espaciado / 2;
-		setespacio(derecho, temp);
-		temp += perimetro;
-		setespacio(derecho, temp);
+		if (x == 1)
+		{
+			s = "   " + to_string(a) + "   ";
+			p = " " + to_string(a) + " ";
+			c5 = "  " + to_string(a) + "  ";
+		}
+		else if (x == 2) {
+			s = "   " + to_string(a) + "  ";
+			p = " " + to_string(a);
+			c5 = "  " + to_string(a) + " ";
+		}
+		else if (x == 3) {
+			s = "  " + to_string(a) + "  ";
+			p = to_string(a);
+			c5 = " " + to_string(a) + " ";
+		}
+		else if (x == 4) {
+			s = "  " + to_string(a) + " ";
+			c5 = " " + to_string(a);
+		}
+		else if (x == 5) {
+			s = " " + to_string(a) + " ";
+			c5 = to_string(a);
+		}
+		else if (x == 6) {
+			s = to_string(a) + " ";
+		}
+		else if (x == 7) {
+			s = to_string(a);
+		}
+		else {
+			s = " !Valid";
+			break;
+		}
+
+	}
+	if (variable == 2)
+	{
+		return s;
+	}
+	else if (variable == 1) {
+		return p;
 	}
 	else {
-		if (espaciado < 4) {
-			int derecho = espaciado / 2;
-			setespacio(derecho, temp);
-			temp += perimetro;
-			setespacio(derecho + 1, temp);
-			return temp;
-		}
-		int derecho = espaciado / 2;
-		setespacio(derecho, temp);
-		temp += perimetro;
-		setespacio(derecho + 1, temp);
+		return c5;
 	}
-	return temp;
 }
+void Circulo::leerCirculo(int r){
+	int mult = round(3.14 * r), perimetro = round(r*3.14*2), area = round(3.14*r*r);
+	string value_r = circulo_valid(r, 1), 
+		value = circulo_valid(mult, 3), value2 = circulo_valid(perimetro, 2),
+		value3 = circulo_valid(area, 2);
 
-void Circulo::leerCirculo(int r)
-{
+	string str = R"([\[\]])", 
+		str2 = R"(\{r\*p\})", str3 = R"(\{p\*r\*r\})",
+		str4 = R"(\{2\*p\*r\})", str5 = R"(\{D\*d\/2\})";
+
+	regex patron(str), val(str2), val2(str3), patron2(str4), patron3(str5);
+
+	string str_r = R"(\{r\})";
+	regex patron_r(str_r);
+
+	string str_pi = R"(\{p\})"; 
+	regex patron_pi(str_pi); 
 
 	string linea;
+
 	ifstream Entrada("Circulo.txt", ios::in);
 	if (!Entrada) {
 		cerr << "No se pudo abrir el archivo" << endl;
 		exit(EXIT_FAILURE);
 	}
-	double Perimetro = 2 * PI * r, area = PI * pow(r, 2),PerimetroCamino=PI*r;
-	string resultado;
-
-	stringstream ssPerimetro, ssArea, ssCaminoPerimetro;
-	ssPerimetro << fixed << setprecision(4) << Perimetro;
-	ssArea << fixed << setprecision(4) << area;
-	ssCaminoPerimetro << fixed << setprecision(4) << PerimetroCamino;
-
-	string rstring = to_string(r);
-	string Pstring = ssPerimetro.str();
-	string Astring = ssArea.str();
-	string CaminoPerimetro = ssCaminoPerimetro.str();
-
-	string Pfinal = Centrar(Pstring, 17);
-	string Afinal = Centrar(Astring, 15);
-
-
-	string patronA = R"(A1)";
-	string patronB = R"(B1)";
-	string patronC = R"(C1)";
-	string patronD = R"(D1)";
-	//string patronE = R"(E1)";
-	string patron2 = R"(N)";
-	string patron3 = R"(M)";
-
-	regex regA(patronA);
-	regex regB(patronB);
-	regex regC(patronC);
-	regex regD(patronD);
-	//regex regE(patronE);
-	regex reg2(patron2);
-	regex reg3(patron3);
-	smatch matches;
-
-	string BFstring = Centrar(rstring, 5);
-	string AFstring = Centrar(rstring, 4);
-	string CFstring = Centrar(rstring, 6);
-	string DFstring = Centrar(CaminoPerimetro, 9);
-	//string EFstring = Centrar(rstring, 3);
-
-	while (getline(Entrada, linea))
+	while (Entrada.is_open())
 	{
-		resultado = regex_replace(linea, regA, AFstring);
-		resultado = regex_replace(resultado, regB, BFstring);
-		resultado = regex_replace(resultado, regC, CFstring);
-		resultado = regex_replace(resultado, regD, DFstring);
-		//resultado = regex_replace(resultado, regE, EFstring);
-		resultado = regex_replace(resultado, reg2, Pfinal);
-		resultado = regex_replace(resultado, reg3, Afinal);
-		cout << resultado << endl;
+		while (!Entrada.eof()) {
+			getline(Entrada, linea);
+			smatch matches;
+			if (regex_search(linea, matches, patron_r))
+			{
+				string values = regex_replace(linea, patron_r, value_r);
+				cout << values << endl;
+			}
+			else if (regex_search(linea, matches, val)) {
+				string values = regex_replace(linea, val, value); 
+				cout << values << endl;
+			}
+			else if (regex_search(linea, matches, patron2)) {
+				string values = regex_replace(linea, patron2, value2);
+				cout << values << endl;
+			}
+			else if (regex_search(linea, matches, val2)) {
+				string values = regex_replace(linea, val2, value3);
+				cout << values << endl;
+			}
+			else {
+				cout << linea << endl;
+			}
+		}
+		Entrada.close();
 	}
-	Entrada.close();
 }
