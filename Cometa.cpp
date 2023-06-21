@@ -113,10 +113,6 @@ void Cometa::leerCometa(int a, int b, int d, int D)
                 else {
                     cout << llaves << endl; 
                 }
-
-                /*string resultado = regex_replace(llaves, patron, " ");
-
-                cout << resultado << endl;*/ 
             }
             else {
                 cout << linea << endl;
