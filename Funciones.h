@@ -75,7 +75,6 @@ void lectura(string figura, char* argv[]) {
         int r = atoi(argv[2]);
         Circulo::leerCirculo(r);
     }else {
-        //hay que poner el menu
         Menu();
     }
 }
