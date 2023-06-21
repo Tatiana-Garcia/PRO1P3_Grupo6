@@ -45,16 +45,18 @@ void Circulo::leerCirculo(int r)
 		cerr << "No se pudo abrir el archivo" << endl;
 		exit(EXIT_FAILURE);
 	}
-	double Perimetro = 2 * PI * r, area = PI * pow(r, 2);
+	double Perimetro = 2 * PI * r, area = PI * pow(r, 2),PerimetroCamino=PI*r;
 	string resultado;
 
-	stringstream ssPerimetro, ssArea;
+	stringstream ssPerimetro, ssArea, ssCaminoPerimetro;
 	ssPerimetro << fixed << setprecision(4) << Perimetro;
 	ssArea << fixed << setprecision(4) << area;
+	ssCaminoPerimetro << fixed << setprecision(4) << PerimetroCamino;
 
 	string rstring = to_string(r);
 	string Pstring = ssPerimetro.str();
 	string Astring = ssArea.str();
+	string CaminoPerimetro = ssCaminoPerimetro.str();
 
 	string Pfinal = Centrar(Pstring, 17);
 	string Afinal = Centrar(Astring, 15);
@@ -80,7 +82,7 @@ void Circulo::leerCirculo(int r)
 	string BFstring = Centrar(rstring, 5);
 	string AFstring = Centrar(rstring, 4);
 	string CFstring = Centrar(rstring, 6);
-	string DFstring = Centrar(rstring, 5);
+	string DFstring = Centrar(CaminoPerimetro, 9);
 	string EFstring = Centrar(rstring, 3);
 
 	while (getline(Entrada, linea))
