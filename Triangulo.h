@@ -1,7 +1,8 @@
 #pragma once
 #include <fstream>
 #include <iostream>
-#include <string>
+#include <string> 
+#include <regex>
 using namespace std;
 class Triangulo
 {

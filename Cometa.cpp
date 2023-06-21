@@ -16,20 +16,25 @@ string cometa_valid(int a, int variable)
         {
             s = "   " + to_string(a) + "   ";
             p = " " + to_string(a) + " ";
+            c5 = "  " + to_string(a) + "  ";
         }
         else if (x == 2) {
             s = "   " + to_string(a) + "  ";
             p = " " + to_string(a);
+            c5 = "  " + to_string(a) + " ";
         }
         else if (x == 3) {
             s = "  " + to_string(a) + "  ";
             p = to_string(a);
+            c5 = " " + to_string(a) + " ";
         }
         else if (x == 4) {
             s = "  " + to_string(a) + " ";
+            c5 = " " + to_string(a);
         }
         else if (x == 5) {
             s = " " + to_string(a) + " ";
+            c5 = to_string(a);
         }
         else if (x == 6) {
             s = to_string(a) + " ";
@@ -43,8 +48,16 @@ string cometa_valid(int a, int variable)
         }
 
     }
-
-    return (variable == 2) ? s : p;
+    if (variable == 2)
+    {
+        return s;
+    }
+    else if (variable == 1) {
+        return p;
+    }
+    else {
+        return c5;
+    }
 }
 void Cometa::leerCometa(int a, int b, int d, int D)
 {
