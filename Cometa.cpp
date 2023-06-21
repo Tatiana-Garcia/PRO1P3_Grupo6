@@ -51,10 +51,11 @@ void Cometa::leerCometa(int a, int b, int d, int D)
     int area = 2 * (a + b), suma = (a + b), mult = (D * d), perimetro = mult / 2; 
     string value_a = cometa_valid(a, 1), value_b = cometa_valid(b, 1), 
         value_d = cometa_valid(d, 1), value_D = cometa_valid(D,1),
-        value = cometa_valid(suma,2), value2 = cometa_valid(mult, 2);   
+        value = cometa_valid(suma,2), value2 = cometa_valid(mult, 2), 
+        value3 = cometa_valid(area,2), value4 = cometa_valid(perimetro, 2);
 
     string str = R"([\[\]])", str2 = R"( \{a\+b\} )", str3 = R"(\(\{D\*d\}\))", 
-        str4 = R"([\{\}])", str5 = R"(\[\{2\*a\+b\}\])";
+        str4 = R"(\{2\*a\+b\})", str5 = R"(\{D\*d\/2\})";
 
     regex patron(str), val(str2), val2(str3),patron2(str4), patron3(str5); 
 
@@ -104,8 +105,10 @@ void Cometa::leerCometa(int a, int b, int d, int D)
                 }
                 else if (regex_search(linea, matches, patron2)) 
                 {
-                    string values = regex_replace(llaves, patron_d, value_d);
-                    cout << values << endl;
+                    
+                    string values = regex_replace(llaves, patron2, value3); 
+                    string cadena = regex_replace(values, patron3, value4);
+                    cout << cadena << endl;
                 }
                 else {
                     cout << llaves << endl; 
