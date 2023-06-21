@@ -66,7 +66,7 @@ void Circulo::leerCirculo(int r)
 	string patronB = R"(B1)";
 	string patronC = R"(C1)";
 	string patronD = R"(D1)";
-	string patronE = R"(E1)";
+	//string patronE = R"(E1)";
 	string patron2 = R"(N)";
 	string patron3 = R"(M)";
 
@@ -74,7 +74,7 @@ void Circulo::leerCirculo(int r)
 	regex regB(patronB);
 	regex regC(patronC);
 	regex regD(patronD);
-	regex regE(patronE);
+	//regex regE(patronE);
 	regex reg2(patron2);
 	regex reg3(patron3);
 	smatch matches;
@@ -83,7 +83,7 @@ void Circulo::leerCirculo(int r)
 	string AFstring = Centrar(rstring, 4);
 	string CFstring = Centrar(rstring, 6);
 	string DFstring = Centrar(CaminoPerimetro, 9);
-	string EFstring = Centrar(rstring, 3);
+	//string EFstring = Centrar(rstring, 3);
 
 	while (getline(Entrada, linea))
 	{
@@ -91,7 +91,7 @@ void Circulo::leerCirculo(int r)
 		resultado = regex_replace(resultado, regB, BFstring);
 		resultado = regex_replace(resultado, regC, CFstring);
 		resultado = regex_replace(resultado, regD, DFstring);
-		resultado = regex_replace(resultado, regE, EFstring);
+		//resultado = regex_replace(resultado, regE, EFstring);
 		resultado = regex_replace(resultado, reg2, Pfinal);
 		resultado = regex_replace(resultado, reg3, Afinal);
 		cout << resultado << endl;
