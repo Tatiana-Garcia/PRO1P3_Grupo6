@@ -1,51 +1,56 @@
 #include "Rombo.h"
 
 string centrar3(int valor) {
+    string mensaje;
     if (to_string(valor).size() == 1)
-        return " " + to_string(valor) + " ";
+        mensaje = " " + to_string(valor) + " ";
     else if (to_string(valor).size() == 2)
-        return " " + to_string(valor);
+        mensaje = " " + to_string(valor);
     else if (to_string(valor).size() == 3)
-        return to_string(valor);
+        mensaje = to_string(valor);
+    return mensaje;
 }
 
 string centrar5(int valor) {
+    string mensaje;
     if (to_string(valor).size() == 1)
-        return "  " + to_string(valor) + "  ";
+        mensaje = "  " + to_string(valor) + "  ";
     else if (to_string(valor).size() == 2)
-        return "  " + to_string(valor) + " ";
+        mensaje = "  " + to_string(valor) + " ";
     else if (to_string(valor).size() == 3)
-        return " " + to_string(valor) + " ";
+        mensaje = " " + to_string(valor) + " ";
     else if (to_string(valor).size() == 4)
-        return " " + to_string(valor);
+        mensaje = " " + to_string(valor);
     else if (to_string(valor).size() == 5)
-        return to_string(valor);
+        mensaje = to_string(valor);
+    return mensaje;
 }
 
 string centrar7(int valor) {
+    string mensaje;
     if (to_string(valor).size() == 1)
-        return "   " + to_string(valor) + "   ";
+        mensaje = "   " + to_string(valor) + "   ";
     else if (to_string(valor).size() == 2)
-        return "   " + to_string(valor) + "  ";
+        mensaje = "   " + to_string(valor) + "  ";
     else if (to_string(valor).size() == 3)
-        return "  " + to_string(valor) + "  ";
+        mensaje = "  " + to_string(valor) + "  ";
     else if (to_string(valor).size() == 4)
-        return "  " + to_string(valor) + " ";
+        mensaje = "  " + to_string(valor) + " ";
     else if (to_string(valor).size() == 5)
-        return " " + to_string(valor) + " ";
+        mensaje = " " + to_string(valor) + " ";
     else if (to_string(valor).size() == 6)
-        return " " + to_string(valor);
+        mensaje = " " + to_string(valor);
     else if (to_string(valor).size() == 7)
-        return to_string(valor);
+        mensaje = to_string(valor);
+    return mensaje;
 }
 
 void Rombo::leerRombo(int a, int d, int D){
     ifstream rombo;
-    string texto;
+    string texto, print, reemplazo;
     string str = R"(\{a\})", str2 = R"(\{D\})", str3 = R"(\{d\})", str4 = R"(\{4\*a\})";
     string str5 = R"(\{D\*d\})", str6 = R"(\{D\*d\/2\})";
     regex patron(str), patron2(str2), patron3(str3), patron4(str4), patron5(str5), patron6(str6);
-    string print, reemplazo;
 
     rombo.open("Rombo.txt", ios::in);
     if (rombo.fail()) {

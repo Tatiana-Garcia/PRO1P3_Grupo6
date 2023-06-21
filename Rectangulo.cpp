@@ -1,102 +1,94 @@
 #include "Rectangulo.h"
-static void setespacio(int cantidad, string& texto) {
-	for (size_t i = 0; i < cantidad; i++)
-	{
-		texto += " ";
-	}
+
+string center3(int valor) {
+	string mensaje;
+	if (to_string(valor).size() == 1)
+		mensaje = " " + to_string(valor) + " ";
+	else if (to_string(valor).size() == 2)
+		mensaje = " " + to_string(valor);
+	else if (to_string(valor).size() == 3)
+		mensaje = to_string(valor);
+	return mensaje;
 }
 
-
-static string Centrar(string perimetro, int original) {
-	string temp = "";
-	int length = perimetro.length();
-	int espaciado = original - length;
-
-	if (espaciado % 2 == 0)
-	{
-		int derecho = espaciado / 2;
-		setespacio(derecho, temp);
-		temp += perimetro;
-		setespacio(derecho, temp);
-	}
-	else {
-		if (espaciado < 4) {
-			int derecho = espaciado / 2;
-			setespacio(derecho, temp);
-			temp += perimetro;
-			setespacio(derecho + 1, temp);
-			return temp;
-		}
-		int derecho = espaciado / 2;
-		setespacio(derecho, temp);
-		temp += perimetro;
-		setespacio(derecho + 1, temp);
-	}
-	return temp;
+string center5(int valor) {
+	string mensaje;
+	if (to_string(valor).size() == 1)
+		mensaje = "  " + to_string(valor) + "  ";
+	else if (to_string(valor).size() == 2)
+		mensaje = "  " + to_string(valor) + " ";
+	else if (to_string(valor).size() == 3)
+		mensaje = " " + to_string(valor) + " ";
+	else if (to_string(valor).size() == 4)
+		mensaje = " " + to_string(valor);
+	else if (to_string(valor).size() == 5)
+		mensaje = to_string(valor);
+	return mensaje;
 }
 
-void Rectangulo::leerRectangulo(int a, int b)
-{
-    string linea;
-    ifstream Entrada("Rectangulo.txt", ios::in);
-    if (!Entrada) {
+string center7(int valor) {
+	string mensaje;
+	if (to_string(valor).size() == 1)
+		mensaje = "   " + to_string(valor) + "   ";
+	else if (to_string(valor).size() == 2)
+		mensaje = "   " + to_string(valor) + "  ";
+	else if (to_string(valor).size() == 3)
+		mensaje = "  " + to_string(valor) + "  ";
+	else if (to_string(valor).size() == 4)
+		mensaje = "  " + to_string(valor) + " ";
+	else if (to_string(valor).size() == 5)
+		mensaje = " " + to_string(valor) + " ";
+	else if (to_string(valor).size() == 6)
+		mensaje = " " + to_string(valor);
+	else if (to_string(valor).size() == 7)
+		mensaje = to_string(valor);
+	return mensaje;
+}
+
+void Rectangulo::leerRectangulo(int a, int b){
+    ifstream rectangulo("Rectangulo.txt", ios::in);
+
+	string texto, print, reemplazo;
+	string str = R"(\{a\})", str2 = R"(\{b\})", str3 = R"(\{b\+a\})", str4 = R"(\{2\*b\+a\})", str5 = R"(\{b\*a\})";
+	regex patron(str), patron2(str2), patron3(str3), patron4(str4), patron5(str5);
+
+    if (!rectangulo) {
         cerr << "No se pudo abrir el archivo" << endl;
         exit(EXIT_FAILURE);
     }
-	int Perimetro = 2 * (a+b),area = a*b, PerimetroCamino = a+b;
-	string resultado;
 
-	string astring = to_string(a);
-	string bstring = to_string(b);
-	string Pstring = to_string(Perimetro);;
-	string Astring = to_string(area);;
-	string CaminoPerimetrostring = to_string(PerimetroCamino);
+	while (getline(rectangulo, texto)){
+		smatch matches;
+		if (regex_search(texto, matches, patron2)) {//{b}
+			print = center3(b);
+			reemplazo = regex_replace(texto, patron2, print);
+			if (regex_search(texto, matches, patron)) {//{a}
+				print = center3(a);
+				reemplazo = regex_replace(reemplazo, patron, print);
+			}
+			if (regex_search(texto, matches, patron4)) {//{2*(b+a)}
+				print = center7(2 * (b + a));
+				reemplazo = regex_replace(reemplazo, patron4, print);
+			}
+			cout << reemplazo << endl;
+		}
 
-	string patronA1 = R"(a1)";
-	string patronA2 = R"(a2)";
-	string patronA3 = R"(a3)";
-	string patronB1 = R"(b1)";
-	string patronB2 = R"(b2)";
-	string patronB3 = R"(b3)";
-	string patronB4 = R"(b4)";
-	string patronB5 = R"(b5)";
-	string patronB6 = R"(b6)";
-
-	regex regA1(patronA1);
-	regex regA2(patronA2);
-	regex regA3(patronA3);
-	regex regB1(patronB1);
-	regex regB2(patronB2);
-	regex regB3(patronB3);
-	regex regB4(patronB4);
-	regex regB5(patronB5);
-	regex regB6(patronB6);
-
-
-	string A1string = Centrar(astring, 4);
-	string B1string = Centrar(bstring, 4);
-	string A2string = Centrar(astring, 4);
-	string B2string = Centrar(bstring, 4);
-	string A3string = Centrar(astring, 7);
-	string B3string = Centrar(bstring, 7);
-	string B4string = Centrar(CaminoPerimetrostring, 5);
-	string B5string = Centrar(Pstring, 15);
-	string B6string = Centrar(Astring, 17);
-
-
-	while (getline(Entrada, linea))
-	{
-		resultado = regex_replace(linea, regA1, A1string);
-		resultado = regex_replace(resultado, regA2, A2string);
-		resultado = regex_replace(resultado, regA3, A3string);
-		resultado = regex_replace(resultado, regB1, B1string);
-		resultado = regex_replace(resultado, regB2, B2string);
-		resultado = regex_replace(resultado, regB3, B3string);
-		resultado = regex_replace(resultado, regB4, B4string);
-		resultado = regex_replace(resultado, regB5, B5string);
-		resultado = regex_replace(resultado, regB6, B6string);
-
-		cout << resultado << endl;
+		else if (regex_search(texto, matches, patron)) {//{a}
+			print = center3(a);
+			reemplazo = regex_replace(texto, patron, print);
+			cout << reemplazo << endl;
+		}else if (regex_search(texto, matches, patron3)) {//{b+a}
+			print = center5(b+a);
+			reemplazo = regex_replace(texto, patron3, print);
+			cout << reemplazo << endl;
+		}else if (regex_search(texto, matches, patron5)) {//{b*a}
+			print = center5(b * a);
+			reemplazo = regex_replace(texto, patron5, print);
+			cout << reemplazo << endl;
+		}else {
+			cout << texto << endl;
+		}
 	}
-	Entrada.close();
+
+	rectangulo.close();
 }
