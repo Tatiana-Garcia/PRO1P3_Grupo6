@@ -1,4 +1,39 @@
 #include "Rectangulo.h"
+static void setespacio(int cantidad, string& texto) {
+	for (size_t i = 0; i < cantidad; i++)
+	{
+		texto += " ";
+	}
+}
+
+
+static string Centrar(string perimetro, int original) {
+	string temp = "";
+	int length = perimetro.length();
+	int espaciado = original - length;
+
+	if (espaciado % 2 == 0)
+	{
+		int derecho = espaciado / 2;
+		setespacio(derecho, temp);
+		temp += perimetro;
+		setespacio(derecho, temp);
+	}
+	else {
+		if (espaciado < 4) {
+			int derecho = espaciado / 2;
+			setespacio(derecho, temp);
+			temp += perimetro;
+			setespacio(derecho + 1, temp);
+			return temp;
+		}
+		int derecho = espaciado / 2;
+		setespacio(derecho, temp);
+		temp += perimetro;
+		setespacio(derecho + 1, temp);
+	}
+	return temp;
+}
 
 void Rectangulo::leerRectangulo(int a, int b)
 {

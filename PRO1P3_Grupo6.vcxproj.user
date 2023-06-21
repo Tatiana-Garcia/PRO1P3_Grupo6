@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+<<<<<<< HEAD
     <LocalDebuggerCommandArguments>trapecio 1 21 3 100 5</LocalDebuggerCommandArguments>
+=======
+    <LocalDebuggerCommandArguments>circulo 10</LocalDebuggerCommandArguments>
+>>>>>>> 38ca8ae2b5e4f0063bbc1cb77fc709d9d8cd3320
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>
